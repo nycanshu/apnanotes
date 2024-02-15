@@ -11,10 +11,10 @@ class SplashController extends GetxController {
 
   void splashHandel() async {
     Future.delayed(
-      Duration(seconds: 7),
+      Duration(seconds: 5),
       () {
         Get.offAllNamed(
-          '/home',
+          '/welcomepage',
         );
       },
     );
