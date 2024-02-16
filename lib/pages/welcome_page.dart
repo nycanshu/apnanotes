@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:apnanotes/config/my_colors.dart';
+import 'package:apnanotes/pages/sign_in.dart';
 import 'package:apnanotes/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -60,11 +61,13 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             //sign in container
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.offAll(SignInPage());
+              },
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width - 10,

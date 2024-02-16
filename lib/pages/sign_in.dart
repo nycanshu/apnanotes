@@ -1,32 +1,22 @@
 import 'package:apnanotes/config/my_colors.dart';
 import 'package:apnanotes/controller/auth_controller.dart';
+import 'package:apnanotes/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
-  @override
-  State<SignUpPage> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: blueColor.withOpacity(0.5),
-        title: const Text('Register Yourself'),
-        centerTitle: true,
-        foregroundColor: Colors.black,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-        child: SingleChildScrollView(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            //mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const Text(
                 'Love To Connect With You',
@@ -41,36 +31,15 @@ class _SignUpState extends State<SignUpPage> {
               const SizedBox(
                 height: 10,
               ),
-              const Text('Kindly Fill the required fields ❤️'),
-              const SizedBox(
-                height: 20,
-              ),
               const Text(
-                'Name',
+                'Please login with your credentials.',
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
                   fontSize: 18,
-                ),
-              ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                width: MediaQuery.of(context).size.width - 10,
-                child: TextFormField(
-                  controller: authController.name,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.person),
-                    border: InputBorder.none,
-                    hintText: 'Enter Full Name',
-                  ),
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 40,
               ),
               const Text(
                 'Email',
@@ -97,7 +66,7 @@ class _SignUpState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               const Text(
                 'Password',
@@ -115,22 +84,20 @@ class _SignUpState extends State<SignUpPage> {
                 ),
                 width: MediaQuery.of(context).size.width - 10,
                 child: TextFormField(
-                  controller: authController.password,
                   obscureText: true,
+                  controller: authController.password,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.password),
                     border: InputBorder.none,
-                    hintText: 'Enter Password',
+                    hintText: 'Enter Your Password',
                   ),
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               GestureDetector(
-                onTap: () {
-                  authController.signup();
-                },
+                onTap: () {},
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width - 10,
@@ -140,7 +107,7 @@ class _SignUpState extends State<SignUpPage> {
                   ),
                   child: const Center(
                     child: Text(
-                      "Create My Account",
+                      "Log In",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -151,13 +118,13 @@ class _SignUpState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Already have an account?",
+                    "Don't have an Account! ",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -165,10 +132,10 @@ class _SignUpState extends State<SignUpPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.back();
+                      Get.to(const SignUpPage());
                     },
                     child: const Text(
-                      " Log In",
+                      " Create New Account",
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
@@ -177,7 +144,7 @@ class _SignUpState extends State<SignUpPage> {
                     ),
                   ),
                 ],
-              ), //Text
+              ),
             ],
           ),
         ),
