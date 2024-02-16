@@ -97,7 +97,9 @@ class SignInPage extends StatelessWidget {
                 height: 40,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  authController.loginUser();
+                },
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width - 10,

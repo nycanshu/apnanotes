@@ -17,9 +17,13 @@ class _SignUpState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: blueColor.withOpacity(0.5),
-        title: const Text('Register Yourself'),
+        title: const Text(
+          'Register Yourself',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
-        foregroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
@@ -129,7 +133,7 @@ class _SignUpState extends State<SignUpPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  authController.signup();
+                  authController.signupUser();
                 },
                 child: Container(
                   height: 50,
