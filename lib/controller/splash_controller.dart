@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:apnanotes/pages/welcome_page.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -13,9 +14,7 @@ class SplashController extends GetxController {
     Future.delayed(
       Duration(seconds: 5),
       () {
-        Get.offAllNamed(
-          '/welcomepage',
-        );
+        Get.to(WelcomePage());
       },
     );
   }

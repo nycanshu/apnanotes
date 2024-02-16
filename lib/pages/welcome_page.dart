@@ -56,7 +56,7 @@ class WelcomePage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
-                height: 1.3,
+                height: 1.4,
               ),
             ),
             const SizedBox(
@@ -76,7 +76,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 child: const Center(
                   child: Text(
-                    "Sign In",
+                    "Log In",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
