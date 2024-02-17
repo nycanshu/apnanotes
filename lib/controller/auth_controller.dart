@@ -20,7 +20,6 @@ class AuthController extends GetxController {
       Get.snackbar(
         'Success',
         'Account Created Successfully',
-        duration: const Duration(seconds: 2),
       );
       name.clear();
       email.clear();
@@ -31,7 +30,6 @@ class AuthController extends GetxController {
         Get.snackbar(
           'Error',
           'The password provided is too weak.',
-          duration: const Duration(seconds: 2),
         );
       } else if (e.code == 'email-already-in-use') {
         Get.snackbar(
@@ -39,12 +37,18 @@ class AuthController extends GetxController {
           'Email id already in use!',
           duration: const Duration(seconds: 2),
         );
+      } else if (e.code == 'invalid-email') {
+        Get.snackbar(
+          'Error',
+          'Please Enter valid Email!',
+          duration: const Duration(seconds: 2),
+        );
       }
     } catch (e) {
+      //print('Unexpected error: $e');
       Get.snackbar(
         'Error',
-        e.toString(),
-        duration: const Duration(seconds: 2),
+        'An unexpected error occurred. Please try again later.',
       );
     }
   }
@@ -54,10 +58,10 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(
           email: email.text, password: password.text);
+
       Get.snackbar(
         'Success',
         'Login Sucessfully',
-        duration: const Duration(seconds: 2),
       );
       email.clear();
       password.clear();
@@ -67,20 +71,24 @@ class AuthController extends GetxController {
         Get.snackbar(
           'Error',
           'No user found for that email.',
-          duration: const Duration(seconds: 2),
         );
       } else if (e.code == 'wrong-password') {
         Get.snackbar(
           'Error',
           'Wrong password provided for that user.',
+        );
+      } else if (e.code == 'invalid-email') {
+        Get.snackbar(
+          'Error',
+          'Please Enter valid Email!',
           duration: const Duration(seconds: 2),
         );
       }
     } catch (e) {
+      //print('Unexpected error: $e');
       Get.snackbar(
         'Error',
-        e.toString(),
-        duration: const Duration(seconds: 2),
+        'An unexpected error occurred. Please try again later.',
       );
     }
   }
@@ -89,13 +97,18 @@ class AuthController extends GetxController {
   void logoutUser() async {
     try {
       await auth.signOut();
+
       Get.snackbar(
         'Sucess',
         'Log Out Sucessfully',
       );
       Get.offAll(const WelcomePage());
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      //print('Unexpected error: $e');
+      Get.snackbar(
+        'Error',
+        'An unexpected error occurred. Please try again later.',
+      );
     }
   }
 }
